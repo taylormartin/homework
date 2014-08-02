@@ -14,7 +14,7 @@ letter = gets.chomp
 
 string = File.open("homework.md").read
 
-split_string = string.split(//)
+split_string = string.split("")
 
 split_string = split_string.delete_if {|x| x != letter}
 
