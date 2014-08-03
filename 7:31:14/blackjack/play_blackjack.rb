@@ -1,3 +1,7 @@
+=begin
+aces aren't being calculated correctly
+=end
+
 require "./blackjack.rb"
 
 
@@ -5,9 +9,10 @@ player = Player.new
 
 puts "Lets Play Blackjack"
 puts "Bets are $10 each and you start with $#{player.bank}"
+keep_playing = "yes"
 
 
-while player.bank > 0
+while player.bank > 0 && keep_playing == "yes"
   deck = Deck.new
   p_hand = Hand.new
   d_hand = Hand.new
@@ -25,6 +30,8 @@ while player.bank > 0
     playing = false
     puts "The dealer got a blackjack, you lose!"
     player.withdraw
+    puts "Would you like to keep playing? (yes or no)"
+    keep_playing = gets.chomp
   elsif p_hand.blackjack?
     playing = false
     while d_hand.value < 17
@@ -32,11 +39,15 @@ while player.bank > 0
     end
     if d_hand.blackjack?
       puts "Dealer also got blackjack"
+      puts "Would you like to keep playing? (yes or no)"
+      keep_playing = gets.chomp
     else
       puts "Your Hand: #{p_hand.to_s}"
       puts "Dealer Hand: #{d_hand.to_s}"
-      puts "You win"
+      puts "You got a blackjack!"
       player.deposit
+      puts "Would you like to keep playing? (yes or no)"
+      keep_playing = gets.chomp
     end
   else
     while playing
@@ -52,23 +63,31 @@ while player.bank > 0
           puts "Your Hand: #{p_hand.to_s}"
           puts "Dealer Hand: #{d_hand.to_s}"
           player.deposit
+          puts "Would you like to keep playing? (yes or no)"
+          keep_playing = gets.chomp
         elsif d_hand.value > p_hand.value
           playing = false
           puts "Dealer wins"
           puts "Your Hand: #{p_hand.to_s}"
           puts "Dealer Hand: #{d_hand.to_s}"
           player.withdraw
+          puts "Would you like to keep playing? (yes or no)"
+          keep_playing = gets.chomp
         elsif d_hand.value == p_hand.value
           playing = false
           puts "You tied"
           puts "Your Hand: #{p_hand.to_s}"
           puts "Dealer Hand: #{d_hand.to_s}"
+          puts "Would you like to keep playing? (yes or no)"
+          keep_playing = gets.chomp
         else
           playing = false
           puts "You won"
           puts "Your Hand: #{p_hand.to_s}"
           puts "Dealer Hand: #{d_hand.to_s}"
           player.deposit
+          puts "Would you like to keep playing? (yes or no)"
+          keep_playing = gets.chomp
         end
       else
         p_hand.add(deck.draw)
@@ -77,6 +96,8 @@ while player.bank > 0
           puts "Your Hand: #{p_hand.to_s}"
           playing = false
           player.withdraw
+          puts "Would you like to keep playing? (yes or no)"
+          keep_playing = gets.chomp
         else
           puts "Your Hand: #{p_hand.to_s}"
         end
@@ -84,10 +105,3 @@ while player.bank > 0
     end
   end
 end
-
-=begin
-aces aren't being calculated correctly
-
-need to address what happens if the dealer gets black jack
-from the start
-=end

@@ -140,4 +140,8 @@ class Player
     @bank -= 10
   end
 
+  def keep_playing?
+
+  end
+
 end
