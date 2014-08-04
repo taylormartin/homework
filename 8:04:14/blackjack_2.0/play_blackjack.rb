@@ -1,27 +1,21 @@
-require "./player.rb"
-require "./hand.rb"
-require "./deck"
+require "./game"
 
-player = Player.new
+game = Game.new
 
 puts "Lets Play Blackjack"
-puts "Bets are $10 each and you start with $#{player.bank}"
-keep_playing = "yes"
+puts "Bets are $10 each and you start with $#{game.player.bank}"
+keep_playing = true
 
-
-while player.bank > 0 && keep_playing == "yes"
+while game.player.bank > 0 && keep_playing
   deck = Deck.new
-  p_hand = Hand.new
-  d_hand = Hand.new
   playing = true
-  d_hand.add(deck.draw, deck.draw)
-  p_hand.add(deck.draw, deck.draw)
+  game.deal
   puts
   puts
-  puts "You have $#{player.bank}"
-  puts "Dealer Hand: #{d_hand.print_first_card}"
+  puts "You have $#{game.player.bank}"
+  puts "Dealer Hand: #{game.dealer.hand.print_first_card}"
   puts
-  puts "Your Hand: #{p_hand.to_s}"
+  puts "Your Hand: #{game.player.hand.to_s}"
   puts
   if d_hand.blackjack?
     playing = false

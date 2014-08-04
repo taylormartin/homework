@@ -2,7 +2,7 @@ require "./card.rb"
 
 class Deck
 
-attr_reader :card, :drawn
+attr_reader :cards, :drawn
 
   def initialize()
     @cards = []
