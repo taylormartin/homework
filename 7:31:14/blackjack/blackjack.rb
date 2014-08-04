@@ -93,10 +93,8 @@ class Hand
           @value -= 10
         end
       end
-      return @value
-    else
-      return @value
     end
+    return @value
   end
   def busted?
    if @value > 21
