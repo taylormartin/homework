@@ -9,6 +9,7 @@ Level 1:
 * The program should be fully object-oriented
 * The player starts with $100 and bets are $10
 * The only options are hit and stand
+
 * Players can play as long as they can afford it, and can
   leave after any round.
 * The dealer reshuffles after every round

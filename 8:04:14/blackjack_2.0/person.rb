@@ -8,6 +8,7 @@ class Person
   end
 
   def score
+
     @hand.value
   end
 
@@ -33,6 +34,13 @@ class Player < Person
   end
 
   def leave_game?
+  end
+
+  def money_gone?
+    if @bank <= 0
+      true
+    else
+      false
   end
 
 end

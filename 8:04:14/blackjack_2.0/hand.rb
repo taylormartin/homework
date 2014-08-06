@@ -3,7 +3,7 @@ class Hand
     @cards = []
     @value = 0
   end
-  
+
   def add(*cards)
     cards.each do |card|
       @cards << card

@@ -9,14 +9,18 @@ class Game
     @dealer = Dealer.new
   end
 
-  def deal()
+  def game_intro
+    puts "Lets Play Blackjack"
+    puts "Bets are $10 each and you start with $#{player.bank}"
     @player.hand.add(deck.draw, deck.draw)
     @dealer.hand.add(deck.draw, deck.draw)
+    if dealer.hand.blackjack?
+      puts "The dealer got a blackjack, you lose!"
+        #take money from the bank
   end
 
   def play
-    puts "Lets Play Blackjack"
-    puts "Bets are $10 each and you start with $#{game.player.bank}"
+
     keep_playing = true
 
     while game.player.bank > 0 && keep_playing
