@@ -1,0 +1,18 @@
+%html
+  %head
+    %link{:href=>"//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css", :rel=>"stylesheet"}
+
+  %body
+    .container
+      %h1 Give me a string, and I'll count the letters
+      %form{:method => "POST"}
+        %input{:name => "text", :placeholder => "Input Words"}
+
+      - if @count
+        %p= "There are #{@count} letter's in the string you passed"
+
+    .container
+      %h1 Look I can also reverse strings!
+
+      - if @reversed
+        %p= "Reversed string: #{@reversed}"
