@@ -7,15 +7,10 @@ class Spotify
 
   def self.top_tracks_for
     response = get "/v1/artists/4LhV33vJvXmFGSM3m5RzUR/top-tracks?country=US"
-    @tracks = []
-    (0..9).each do |x|
-      name = response['tracks'][x]['name']
-      album = response['tracks'][x]['album']['name']
-      playurl = response['tracks'][x]['external_urls']['spotify']
-      @track = Track.new(name, album, playurl)
-      @tracks << @track
+    #james simplified version of the code I wrote
+    @tracks = respose['tracks'].first(10).map do |h|
+      Track.new(h['name'], h['album']['name'], h['external_urls']['spotify'])
     end
-    return @tracks
   end
 
 end
