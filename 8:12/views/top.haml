@@ -1,0 +1,27 @@
+!!!
+
+%html
+  %head
+    / This formats the title of the tab in the browser
+    %title Spotify - Top Tracks
+    %link{:href=>"//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css", :rel=>"stylesheet"}
+
+  %body
+    %nav.navbar.navbar-inverse{role: "navigation"}
+      .container-fluid
+        .navbar-header
+          %a.navbar-brand{href: "/toptracks"} Spotify - Blake Mills Top 10 Tracks
+
+  %table.table.table-bordered.table-striped
+    %thead
+      %tr
+        %th Track Name
+        %th Album
+        %th Play In Spotify
+    %tbody
+      - @tracks.each do |track|
+        %tr
+          %td= track.name
+          %td= track.album
+          %td
+            %a{href: track.playurl} play

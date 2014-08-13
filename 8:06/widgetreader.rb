@@ -17,6 +17,8 @@ include Enumerable
 require "yaml"
 
 widget_list = YAML::load(File.open("widgets.yml"))
+require "pry"
+
 
 puts "Most Expensive Item"
 puts "Name: #{widget_list.max_by { |item| item[:price] }[:name]}"
@@ -33,9 +35,14 @@ puts
 puts "Ten Best Selling Widgets"
 widget_list.sort_by { |i| -i[:sold] }.first(10).each { |i| puts "#{i[:name]} Units(#{i[:sold]})"}
 puts
+
+#the thing I wasn't understanding with this solution was how .each works
+#when you pass it a hash, when you say do |variable1, variable2|, variable1
+#is going to be the key and variable2 will be the corresponding value
 puts "Departments: "
 departments = widget_list.group_by{|x| x[:department]}
-departments.each do |d, h|
-  n = h.reduce(0){|x, y| x + y[:sold]}
-  puts "#{d} - #{n} widgets sold"
+binding.pry
+departments.each do |k1, v1|
+  number = v1.reduce(0){|k2, v2| k2 + v2[:sold]}
+  puts "#{k1} - #{number} widgets sold"
 end
