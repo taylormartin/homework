@@ -1,0 +1,10 @@
+%h1 Index - Tweet
+
+%p
+  %a{:href => new_tweet_path} Compose Tweet
+  %br
+  %a{:href => '/profiles'} View Users
+
+- @tweets.each do |t|
+  = t[:content]
+  %br

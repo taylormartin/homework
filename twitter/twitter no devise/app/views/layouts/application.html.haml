@@ -1,0 +1,27 @@
+!!!
+/ ^-- that is a doctype
+%html
+  %head
+    / This formats the title of the tab in the browser
+    %title Not Twitter
+    %link{:href=>"//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css", :rel=>"stylesheet"}
+
+  %body
+
+    %p.notice= notice
+    %p.alert= alert
+  
+    %nav.navbar.navbar-inverse{role: "navigation"}
+      .container-fluid
+        .navbar-header
+          %a.navbar-brand{href: "/"} Home
+        %ul.nav.navbar-nav
+          %li
+            / This is a link to '/reverse'
+            / "http://www.google.com" to go off-site
+            %a{href: "/users/:id"} Me
+          %li
+            %a{href: "/tweets/new"} New Tweet
+
+    .container
+      = yield

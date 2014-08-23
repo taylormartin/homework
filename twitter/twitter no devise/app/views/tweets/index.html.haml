@@ -1,0 +1,8 @@
+%h1 Index - Tweet
+
+%p
+  %a{:href => new_tweet_path} Compose Tweet
+
+- @tweets.each do |t|
+  = t[:content]
+  %br

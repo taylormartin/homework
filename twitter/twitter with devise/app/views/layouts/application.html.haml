@@ -1,0 +1,18 @@
+!!!
+%html
+  %head
+    %title DeviseApp
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %nav{:role => "navigation"}
+    .inner
+      %a#nav-collapse.nav-collapse{:href => "#nav"} Menu
+      %ul#nav.nav
+        %li= link_to "Home", root_path
+        = render 'devise/menu/registration_items'
+        = render 'devise/menu/login_items'
+  %body
+    %p.notice= notice
+    %p.alert= alert
+    = yield

@@ -1,0 +1,8 @@
+%h1 New - Tweet
+
+%p
+  = form_tag("/tweets", method: "post") do
+    = label_tag( "Compose a new Tweet")
+    %br
+    = text_field_tag "content"
+    = submit_tag "Tweet"
