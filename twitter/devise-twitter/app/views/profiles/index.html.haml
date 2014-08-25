@@ -1,7 +1,19 @@
-%h1 Index - Profile
+%h1 Users
 
-- @users.each do |x|
-  %p= "#{x.name} (#{x.tag})"
-  =form_tag('/profiles', method: :post) do
-    =hidden_field_tag :id, x.id
-    =submit_tag 'Follow'
+.row
+  .col-md-6
+    %table.table
+      %thead
+        %tr
+          %th Name
+          %th Tag
+          %th Follow
+      %tbody
+      - @users.each do |user|
+        %tr
+          %td= user.name
+          %td= user.tag
+          =form_tag('/profiles', method: :post) do
+            =hidden_field_tag :id, user.id
+          %td= submit_tag 'Follow'
+  .col-md-6
